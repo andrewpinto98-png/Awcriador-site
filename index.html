@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AW — Desenvolvedor de Sites | Rio de Janeiro & Pernambuco</title>
+<meta name="description" content="Desenvolvedor de sites profissionais com SEO, Google Analytics e sistema de captação de clientes. Atendo no Rio de Janeiro e Pernambuco.">
+<meta property="og:title" content="AW — Sites que vendem">
+<meta property="og:description" content="Criamos sites profissionais que aparecem no Google e captam clientes automaticamente.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --preto: #080808;
+  --branco: #f5f5f0;
+  --cinza: #1a1a1a;
+  --cinza-medio: #2a2a2a;
+  --cinza-suave: #888;
+  --verde: #00ff88;
+  --verde-escuro: #00cc6a;
+  --borda: rgba(255,255,255,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--preto);
+  color: var(--branco);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .syne { font-family: 'Syne', sans-serif; }
+
+/* CURSOR */
+* { cursor: none; }
+.cursor {
+  width: 12px; height: 12px;
+  background: var(--verde);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease;
+  mix-blend-mode: difference;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.5rem 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(8,8,8,0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--borda);
+}
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px; font-weight: 800;
+  color: var(--branco); text-decoration: none;
+  letter-spacing: -0.5px;
+}
+.nav-logo span { color: var(--verde); }
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a {
+  color: var(--cinza-suave); text-decoration: none;
+  font-size: 14px; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--branco); }
+.nav-cta {
+  background: var(--verde);
+  color: var(--preto) !important;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  transition: transform 0.2s, background 0.2s !important;
+}
+.nav-cta:hover { transform: translateY(-2px); background: var(--verde-escuro) !important; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 8rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-inner {
+  max-width: 900px; margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid var(--borda);
+  padding: 6px 14px; border-radius: 50px;
+  font-size: 12px; color: var(--cinza-suave);
+  margin-bottom: 2rem;
+  font-family: 'DM Sans', sans-serif;
+}
+.hero-tag-dot {
+  width: 6px; height: 6px;
+  background: var(--verde);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -3px;
+  margin-bottom: 2rem;
+}
+.hero h1 .verde { color: var(--verde); }
+.hero h1 .outline {
+  -webkit-text-stroke: 1px var(--branco);
+  color: transparent;
+}
+.hero-desc {
+  font-size: 18px; color: var(--cinza-suave);
+  max-width: 520px; line-height: 1.7;
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
+.hero-desc strong { color: var(--branco); font-weight: 500; }
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-verde {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--verde); color: var(--preto);
+  padding: 14px 28px; border-radius: 50px;
+  font-weight: 700; font-size: 15px; text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-family: 'Syne', sans-serif;
+}
+.btn-verde:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,255,136,0.3); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid var(--borda); color: var(--branco);
+  padding: 14px 28px; border-radius: 50px;
+  font-weight: 500; font-size: 15px; text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-ghost:hover { border-color: var(--verde); background: rgba(0,255,136,0.05); }
+.hero-stats {
+  display: flex; gap: 3rem; margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--borda);
+}
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.5rem; font-weight: 800;
+  color: var(--verde);
+}
+.stat-label { font-size: 13px; color: var(--cinza-suave); margin-top: 4px; }
+
+/* SERVIÇOS */
+.servicos {
+  padding: 8rem 2rem;
+  border-top: 1px solid var(--borda);
+}
+.section-tag {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--verde); margin-bottom: 1rem;
+}
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800; letter-spacing: -2px;
+  line-height: 1.05; margin-bottom: 4rem;
+}
+.section-title .outline {
+  -webkit-text-stroke: 1px var(--branco);
+  color: transparent;
+}
+.max-w { max-width: 1100px; margin: 0 auto; }
+
+.servicos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5px;
+  background: var(--borda);
+  border: 1px solid var(--borda);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.servico-card {
+  background: var(--preto);
+  padding: 2.5rem;
+  transition: background 0.3s;
+  position: relative;
+}
+.servico-card:hover { background: var(--cinza); }
+.servico-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px; font-weight: 700;
+  color: var(--verde); letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+.servico-card h3 {
+  font-size: 1.3rem; font-weight: 700;
+  margin-bottom: 1rem; letter-spacing: -0.5px;
+}
+.servico-card p {
+  font-size: 14px; color: var(--cinza-suave);
+  line-height: 1.7; margin-bottom: 1.5rem;
+}
+.servico-includes {
+  list-style: none; display: flex; flex-direction: column; gap: 6px;
+}
+.servico-includes li {
+  font-size: 12px; color: var(--cinza-suave);
+  display: flex; align-items: center; gap: 8px;
+}
+.servico-includes li::before {
+  content: '';
+  width: 4px; height: 4px;
+  background: var(--verde);
+  border-radius: 50%; flex-shrink: 0;
+}
+.servico-preco {
+  margin-top: 2rem; padding-top: 1.5rem;
+  border-top: 1px solid var(--borda);
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem; font-weight: 800;
+}
+.servico-preco span { font-size: 13px; font-weight: 400; color: var(--cinza-suave); font-family: 'DM Sans', sans-serif; }
+.destaque-card {
+  background: var(--cinza) !important;
+  border: 1px solid rgba(0,255,136,0.2);
+}
+.destaque-badge {
+  display: inline-block;
+  background: var(--verde); color: var(--preto);
+  font-size: 10px; font-weight: 800;
+  padding: 3px 10px; border-radius: 50px;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  font-family: 'Syne', sans-serif;
+}
+
+/* CASE */
+.case {
+  padding: 8rem 2rem;
+  border-top: 1px solid var(--borda);
+  background: var(--cinza);
+}
+.case-inner {
+  max-width: 1100px; margin: 0 auto;
+}
+.case-card {
+  background: var(--preto);
+  border: 1px solid var(--borda);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.case-header {
+  padding: 3rem;
+  border-bottom: 1px solid var(--borda);
+  display: flex; justify-content: space-between; align-items: flex-start;
+  flex-wrap: wrap; gap: 1rem;
+}
+.case-titulo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; }
+.case-subtitulo { font-size: 14px; color: var(--cinza-suave); margin-top: 6px; }
+.case-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid var(--borda); color: var(--branco);
+  padding: 10px 18px; border-radius: 50px;
+  font-size: 13px; text-decoration: none;
+  transition: border-color 0.2s;
+}
+.case-link:hover { border-color: var(--verde); color: var(--verde); }
+.case-body { padding: 3rem; }
+.case-metrics {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem; margin-bottom: 3rem;
+}
+.metric {
+  background: var(--cinza);
+  border: 1px solid var(--borda);
+  border-radius: 12px; padding: 1.2rem;
+  text-align: center;
+}
+.metric-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.8rem; font-weight: 800;
+  color: var(--verde);
+}
+.metric-label { font-size: 11px; color: var(--cinza-suave); margin-top: 4px; }
+.case-lista {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.case-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--cinza-suave);
+  line-height: 1.5;
+}
+.case-item::before {
+  content: '✓';
+  color: var(--verde);
+  font-weight: 700; flex-shrink: 0;
+}
+
+/* PROCESSO */
+.processo {
+  padding: 8rem 2rem;
+  border-top: 1px solid var(--borda);
+}
+.processo-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0;
+  margin-top: 4rem;
+  border: 1px solid var(--borda);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.step {
+  padding: 2.5rem;
+  border-right: 1px solid var(--borda);
+  position: relative;
+}
+.step:last-child { border-right: none; }
+.step-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 3rem; font-weight: 800;
+  color: var(--borda);
+  line-height: 1; margin-bottom: 1.5rem;
+}
+.step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.8rem; }
+.step p { font-size: 13px; color: var(--cinza-suave); line-height: 1.6; }
+
+/* CTA FINAL */
+.cta-final {
+  padding: 8rem 2rem;
+  border-top: 1px solid var(--borda);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-glow {
+  position: absolute;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(0,255,136,0.08) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.cta-final h2 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800; letter-spacing: -2px;
+  line-height: 1.05; margin-bottom: 1.5rem;
+  position: relative;
+}
+.cta-final p {
+  font-size: 18px; color: var(--cinza-suave);
+  margin-bottom: 3rem; max-width: 480px;
+  margin-left: auto; margin-right: auto;
+  line-height: 1.7;
+}
+.cta-info {
+  display: flex; justify-content: center; gap: 2rem;
+  margin-top: 2rem; flex-wrap: wrap;
+  font-size: 13px; color: var(--cinza-suave);
+}
+.cta-info span { display: flex; align-items: center; gap: 6px; }
+
+/* FOOTER */
+footer {
+  padding: 2rem;
+  border-top: 1px solid var(--borda);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+  font-size: 12px; color: var(--cinza-suave);
+}
+footer strong { color: var(--branco); font-family: 'Syne', sans-serif; }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+  .case-lista { grid-template-columns: 1fr; }
+  .processo-steps { grid-template-columns: 1fr; }
+  .step { border-right: none; border-bottom: 1px solid var(--borda); }
+  .step:last-child { border-bottom: none; }
+  .cursor { display: none; }
+  * { cursor: auto; }
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.8s ease forwards; }
+.delay-1 { animation-delay: 0.1s; opacity: 0; }
+.delay-2 { animation-delay: 0.2s; opacity: 0; }
+.delay-3 { animation-delay: 0.3s; opacity: 0; }
+.delay-4 { animation-delay: 0.4s; opacity: 0; }
+</style>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9MJDHGFBE1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9MJDHGFBE1');
+</script>
+
+<!-- Open Graph -->
+<meta property="og:title" content="AW — Sites que vendem | RJ & PE">
+<meta property="og:description" content="Sites profissionais com SEO, Google Analytics e captação de clientes automática. Rio de Janeiro e Pernambuco.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://awcriador.netlify.app">
+<meta property="og:locale" content="pt_BR">
+
+<!-- SEO extra -->
+<meta name="keywords" content="desenvolvedor de sites Rio de Janeiro, criação de sites Pernambuco, sites com SEO, presença digital, Google Analytics, captação de clientes">
+<meta name="author" content="AW Criador">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://awcriador.netlify.app">
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "AW — Desenvolvedor de Sites",
+  "description": "Desenvolvimento de sites profissionais com SEO, Google Analytics e sistema de captação de clientes automático.",
+  "url": "https://awcriador.netlify.app",
+  "telephone": "+55-21-99046-6670",
+  "areaServed": [
+    {"@type": "State", "name": "Rio de Janeiro"},
+    {"@type": "State", "name": "Pernambuco"}
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Pacotes de Sites",
+    "itemListElement": [
+      {"@type": "Offer", "name": "Site Profissional", "price": "1500", "priceCurrency": "BRL"},
+      {"@type": "Offer", "name": "Site + SEO + Google", "price": "2500", "priceCurrency": "BRL"},
+      {"@type": "Offer", "name": "Site + SEO + Dashboard", "price": "3500", "priceCurrency": "BRL"},
+      {"@type": "Offer", "name": "Pacote Completo + Automação", "price": "500", "priceCurrency": "BRL"}
+    ]
+  }
+}
+</script>
+
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">AW<span>.</span></a>
+  <div class="nav-links">
+    <a href="#servicos">Serviços</a>
+    <a href="#case">Cases</a>
+    <a href="#processo">Processo</a>
+    <a href="https://wa.me/5521990466670" class="nav-cta">Falar agora</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-tag fade-up delay-1">
+      <span class="hero-tag-dot"></span>
+      Disponível para novos projetos · RJ & PE
+    </div>
+    <h1 class="fade-up delay-2">
+      Sites que<br>
+      <span class="verde">aparecem</span><br>
+      <span class="outline">no Google.</span>
+    </h1>
+    <p class="hero-desc fade-up delay-3">
+      Crio sites profissionais para <strong>profissionais de saúde, serviços e negócios locais</strong> — com SEO, Google Analytics e sistema de captação de clientes automático.
+    </p>
+    <div class="hero-btns fade-up delay-4">
+      <a href="https://wa.me/5521990466670?text=Olá!%20Vi%20seu%20portfólio%20e%20quero%20saber%20mais%20sobre%20os%20serviços." class="btn-verde">
+        Solicitar orçamento →
+      </a>
+      <a href="#case" class="btn-ghost">Ver cases</a>
+    </div>
+    <div class="hero-stats fade-up delay-4">
+      <div>
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Projetos entregues</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Mobile-first</div>
+      </div>
+      <div>
+        <div class="stat-num">0</div>
+        <div class="stat-label">Custo de hospedagem</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="servicos" id="servicos">
+  <div class="max-w">
+    <div class="section-tag">O que ofereço</div>
+    <h2 class="section-title">Pacotes <span class="outline">completos</span></h2>
+    <div class="servicos-grid">
+
+      <div class="servico-card">
+        <div class="servico-num">01</div>
+        <h3>Site Profissional</h3>
+        <p>Site rápido, bonito e otimizado para celular. Pronto para aparecer no Google.</p>
+        <ul class="servico-includes">
+          <li>Design exclusivo</li>
+          <li>100% responsivo (mobile-first)</li>
+          <li>Hospedagem gratuita (Netlify)</li>
+          <li>Domínio personalizado</li>
+          <li>Botão WhatsApp integrado</li>
+        </ul>
+        <div class="servico-preco">R$ 1.500 <span>pagamento único</span></div>
+      </div>
+
+      <div class="servico-card">
+        <div class="servico-num">02</div>
+        <h3>Site + SEO + Google</h3>
+        <p>Tudo do pacote anterior mais presença completa no Google — orgânico e no Maps.</p>
+        <ul class="servico-includes">
+          <li>Tudo do pacote anterior</li>
+          <li>SEO local com keywords da cidade</li>
+          <li>Google Analytics 4</li>
+          <li>Google Search Console</li>
+          <li>Google Business Profile</li>
+          <li>Schema Markup avançado</li>
+        </ul>
+        <div class="servico-preco">R$ 2.500 <span>pagamento único</span></div>
+      </div>
+
+      <div class="servico-card">
+        <div class="servico-num">03</div>
+        <h3>Site + SEO + Dashboard</h3>
+        <p>Captação de leads automática com painel de controle onde você vê todos os contatos.</p>
+        <ul class="servico-includes">
+          <li>Tudo do pacote anterior</li>
+          <li>Sistema de captura de leads</li>
+          <li>Dashboard em tempo real</li>
+          <li>Gestão de status dos contatos</li>
+          <li>Acesso pelo celular</li>
+        </ul>
+        <div class="servico-preco">R$ 3.500 <span>pagamento único</span></div>
+      </div>
+
+      <div class="servico-card destaque-card">
+        <div class="destaque-badge">⭐ Mais completo</div>
+        <div class="servico-num">04</div>
+        <h3>Pacote Completo + Automação</h3>
+        <p>Sistema completo de captação com IA respondendo automaticamente e você só fechando.</p>
+        <ul class="servico-includes">
+          <li>Tudo dos pacotes anteriores</li>
+          <li>WhatsApp automático com IA</li>
+          <li>Respostas personalizadas por serviço</li>
+          <li>Classificação automática de leads</li>
+          <li>Suporte mensal incluído</li>
+        </ul>
+        <div class="servico-preco">R$ 500 <span>/mês após setup</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CASE -->
+<section class="case" id="case">
+  <div class="case-inner">
+    <div class="section-tag">Cases reais</div>
+    <h2 class="section-title">Resultados <span class="outline">comprovados</span></h2>
+
+    <div class="case-card">
+      <div class="case-header">
+        <div>
+          <div class="case-titulo">Psicóloga Alessandra Marques</div>
+          <div class="case-subtitulo">Psicologia Clínica · TCC & Neuropsicologia · Nova Iguaçu, RJ</div>
+        </div>
+        <a href="https://psicologaalessandra.netlify.app" target="_blank" class="case-link">
+          Ver site ao vivo ↗
+        </a>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="metric-num">100%</div>
+            <div class="metric-label">Mobile-first</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">SEO</div>
+            <div class="metric-label">Local otimizado</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">GA4</div>
+            <div class="metric-label">Analytics ativo</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">Maps</div>
+            <div class="metric-label">Google Business</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">Leads</div>
+            <div class="metric-label">Dashboard ativo</div>
+          </div>
+        </div>
+        <div class="case-lista">
+          <div class="case-item">Site profissional com design exclusivo</div>
+          <div class="case-item">SEO local para Nova Iguaçu e São João de Meriti</div>
+          <div class="case-item">Google Analytics 4 com rastreamento de cliques</div>
+          <div class="case-item">Google Search Console verificado e sitemap enviado</div>
+          <div class="case-item">Google Business Profile no Google Maps</div>
+          <div class="case-item">Schema Markup de profissional de saúde</div>
+          <div class="case-item">FAQ com 6 perguntas para reduzir abandono</div>
+          <div class="case-item">Novo serviço Home Care com seção dedicada</div>
+          <div class="case-item">Formulário inteligente com mensagem pré-preenchida</div>
+          <div class="case-item">Dashboard de leads em tempo real com senha</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section class="processo" id="processo">
+  <div class="max-w">
+    <div class="section-tag">Como trabalho</div>
+    <h2 class="section-title">Processo <span class="outline">simples</span></h2>
+    <div class="processo-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Briefing</h3>
+        <p>Entendo seu negócio, público-alvo e objetivos. Defino a estratégia antes de escrever uma linha de código.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Desenvolvimento</h3>
+        <p>Construo o site com foco em velocidade, mobile e conversão. Você acompanha em tempo real.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>SEO & Google</h3>
+        <p>Configuro Analytics, Search Console, Business Profile e todas as ferramentas para aparecer no Google.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Entrega</h3>
+        <p>Site no ar, documentação completa e treinamento para você gerenciar tudo com autonomia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="cta-glow"></div>
+  <h2 class="syne">Seu negócio merece<br><span style="color:var(--verde)">ser encontrado.</span></h2>
+  <p>Vamos criar juntos um site que aparece no Google, capta clientes automaticamente e trabalha por você 24 horas por dia.</p>
+  <a href="https://wa.me/5521990466670?text=Olá!%20Vi%20seu%20portfólio%20e%20quero%20saber%20mais%20sobre%20os%20serviços."
+     class="btn-verde" style="font-size:17px;padding:16px 36px">
+    Solicitar orçamento pelo WhatsApp →
+  </a>
+  <div class="cta-info">
+    <span>📍 Rio de Janeiro & Pernambuco</span>
+    <span>⚡ Resposta em até 2h</span>
+    <span>✅ Orçamento sem compromisso</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div><strong>AW</strong> · Desenvolvedor de Sites</div>
+  <div>Rio de Janeiro & Pernambuco · 2026</div>
+  <div>
+    <a href="https://wa.me/5521990466670" style="color:var(--verde);text-decoration:none">(21) 99046-6670</a>
+  </div>
+</footer>
+
+<script>
+// Cursor personalizado
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = e.clientX - 6 + 'px';
+  cursor.style.top = e.clientY - 6 + 'px';
+});
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(2.5)');
+  el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      entry.target.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.servico-card, .case-card, .step, .metric').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
